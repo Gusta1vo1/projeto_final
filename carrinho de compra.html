@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        .cart {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcc00;
+            width: 100%;
+        }
+        .button {
+            margin-left: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        .button.remove {
+            background-color: #dc3545;
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function loadCart() {
+            const storedCart = localStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.textContent = item;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.classList.add('button', 'remove');
+                removeButton.onclick = () => removeFromCart(index);
+
+                div.appendChild(removeButton);
+                cartContainer.appendChild(div);
+                total += 10; // Supondo um valor fixo de R$10,00 por item
+            });
+
+            document.getElementById('total').textContent = `Total: R$${total.toFixed(2)}`;
+        }
+
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        window.onload = loadCart;
+
+        // Exemplo de adicionar um item ao carrinho
+        function exampleAddItem() {
+            const item = prompt("Digite o nome do item para adicionar ao carrinho:");
+            if (item) {
+                addToCart(item);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Carrinho de Compras</h1>
+    <nav>
+        <a href="index.html">Voltar à Loja</a>
+        <button class="button" onclick="exampleAddItem()">Adicionar Item</button>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="cart" id="cart">
+        <h2>Itens no Carrinho</h2>
+        <div id="cart-items"></div>
+        <div id="total" class="total">Total: R$0,00</div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Confeitaria Delícias. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

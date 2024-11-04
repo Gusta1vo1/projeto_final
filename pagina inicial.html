@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confeitaria da vovô</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        .cake {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            flex: 1 1 30%;
+            box-sizing: border-box;
+        }
+        .cake img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .bolos-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-image: url('fundo_bolos.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 0;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcc00;
+            width: 100%;
+        }
+        #banner {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffeb3b;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        #banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function addToCart(cakeName) {
+            cart.push(cakeName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            const storedCart = localStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+        }
+
+        window.onload = loadCart;
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Bolo da VoVô </h1>
+    <nav>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#banner">Promoção</a>
+        <a href="#bolos">Nossos Bolos</a>
+        <a href="carrinho de compra.html">Carrinho de Compras</a>
+        <a href="#contato">Contato</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Bem-vindo à Confeitaria da vovô, aqui temos todos os tipos de bolo que lembram aquele momento da infância.</p>
+    </section>
+
+    <section id="banner">
+        <h2>Promoção Especial!</h2>
+        <p>Desconto de 20% em todos os bolos até o final do mês!</p>
+        <img src="promoção1.jfif" alt="Promoção de Bolos" style="width: 37%; border-radius: 50px;">
+    </section>
+
+    <section id="bolos" class="bolos-section">
+        <h1>Nossos Bolos</h1>
+        
+        <div class="cake">
+            <h3>Bolo de Chocolate</h3>
+            <img src="bolo_de_chocolate.jfif" alt="Bolo de Chocolate">
+            <img src="bolo de chocolate.jfif" alt="">
+            <p>Nosso Delicioso Bolinho de chocolate da Vovô.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Chocolate')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Cenoura</h3>
+            <img src="bolo_de_cenoura.jfif" alt="Bolo de Cenoura">
+            <img src="bolo de cenoura.jfif" alt="">
+            <p>Um clássico Bolo de cenoura com cobertura de chocolate.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Cenoura')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Limão</h3>
+            <img src="bolo_de_limao.jfif" alt="Bolo de Limão">
+            <img src="bolo de limao.jfif" alt="">
+            <p>Refrescante e leve, perfeito para qualquer ocasião.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Limão')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Morango</h3>
+            <img src="bolo_de_morango.jfif" alt="Bolo de Morango">
+            <img src="bolo de morango.jfif" alt="">
+            <p>Bolo fofinho com camadas de morango fresco e chantilly.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Morango')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Baunilha</h3>
+            <img src="bolo_de_baunilha.jfif" alt="Bolo de Baunilha">
+            <img src="bolo de baunilha.jfif" alt="">
+            <p>Clássico bolo de baunilha, perfeito para festas.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Baunilha')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Coco</h3>
+            <img src="bolo_de_coco.jfif" alt="Bolo de Coco">
+            <img src="bolo de coco.jfif" alt="">
+            <p>Bolo úmido com sabor intenso de coco e cobertura de leite condensado.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Coco')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Pistache</h3>
+            <img src="bolo_de_pistache.jfif" alt="Bolo de Pistache">
+            <img src="bolo de pistache.jfif" alt="">
+            <p>Bolo de pistache com cobertura de creme de pistache.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Pistache')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Iogurte</h3>
+            <img src="bolo_de_iogurte.jfif" alt="Bolo de Iogurte">
+            <img src="bolo de iogurte.jfif" alt="">
+            <p>Leve e fofinho, ideal para um lanche saudável.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Iogurte')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Frutas</h3>
+            <img src="bolo_de_frutas.jfif" alt="Bolo de Frutas">
+            <img src="bolo de frutas.jfif" alt="">
+            <p>Bolo recheado com frutas da estação.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Frutas')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo Red Velvet</h3>
+            <img src="bolo_red_velvet.jfif" alt="Bolo Red Velvet">
+            <img src="bolo de red velvet.jfif" alt="">
+            <p>Bolo aveludado com cobertura de cream cheese.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo Red Velvet')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="cake">
+            <h3>Bolo de Café</h3>
+            <img src="bolo_de_cafe.jfif" alt="Bolo de Café">
+            <img src="bolo de cafe.jfif" alt="">
+            <p>Bolo saboroso de café, ideal para acompanhar uma xícara de café.</p>
+            <p>R$35,00</p>
+            <button onclick="addToCart('Bolo de Café')">Adicionar ao Carrinho</button>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Para pedidos e informações, entre em contato conosco pelo e-mail: <a href="mailto:contato@confeitariadelicias.com">contato@confeitariadelicias.com</a></p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Confeitaria Delícias. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
